@@ -57,4 +57,14 @@ public class HelloController {
         return myConfig.getName();
     }
 
+    /**
+     * 测试全局异常处理
+     * @return
+     */
+    @GetMapping("/testGlobalExceptionHandler")
+    public String testGlobalExceptionHandler(){
+        Object a = null;
+        System.out.println(a.toString());
+        return "测试全局异常处理";
+    }
 }
