@@ -1,6 +1,7 @@
 package net.biancheng.controller;
 
 import net.biancheng.config.MyConfig;
+import net.biancheng.service.AsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -23,6 +24,9 @@ public class HelloController {
 
     @Autowired
     private MyConfig myConfig;
+
+    @Autowired
+    private AsyncService asyncService;
 
     @GetMapping("/hello")
     public String hello(){
@@ -67,4 +71,15 @@ public class HelloController {
         System.out.println(a.toString());
         return "测试全局异常处理";
     }
+
+    /**
+     * 测试异步操作
+     */
+    @GetMapping("/testAsync")
+    public void testAsync(){
+        System.out.println("调用异步前。。。");
+        asyncService.saveLog();
+        System.out.println("调用异步后。。。");
+    }
+
 }
