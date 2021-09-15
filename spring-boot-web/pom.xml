@@ -8,15 +8,14 @@
         <groupId>net.biancheng</groupId>
         <artifactId>spring-cloud-course</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <!--项目描述-->
     <groupId>net.biancheng</groupId>
     <artifactId>spring-boot-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-web</name>
-    <description>spring-boot-web</description>
+    <name>spring-boot-web示例项目</name>
+    <description>spring-boot-web示例项目</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -37,9 +36,24 @@
 
     <build>
         <plugins>
+            <!-- 打包插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                    <mainClass>net.biancheng.App</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- 编译插件, 指定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
