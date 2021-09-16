@@ -1,2 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-net.biancheng.springbootstarterdemo.config.UserAutoConfigure
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#net.biancheng.springbootstarterdemo.config.UserAutoConfigure
