@@ -2,6 +2,7 @@ package net.biancheng.controller;
 
 import net.biancheng.config.MyConfig;
 import net.biancheng.service.AsyncService;
+import net.biancheng.springbootstarterdemo.client.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -27,6 +28,9 @@ public class HelloController {
 
     @Autowired
     private AsyncService asyncService;
+
+    @Autowired
+    private UserClient userClient;
 
     @GetMapping("/hello")
     public String hello(){
@@ -82,4 +86,9 @@ public class HelloController {
         System.out.println("调用异步后。。。");
     }
 
+    @GetMapping("/user/name")
+    public String getUserName(){
+        String name = userClient.getName();
+        return name;
+    }
 }
