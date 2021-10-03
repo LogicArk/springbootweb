@@ -3,6 +3,8 @@ package net.biancheng.eurekaclientarticleservice.config;
 
 import feign.Contract;
 import feign.Logger;
+import feign.auth.BasicAuthRequestInterceptor;
+import net.biancheng.eurekaclientarticleservice.interceptor.FeignBasicAuthRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,5 +30,25 @@ public class FeignConfiguration {
 //    @Bean
 //    public Contract feignContract(){
 //        return new feign.Contract.Default();
+//    }
+
+    /**
+     * 通常我们调用的接口都是有权限控制的，很多时候可能认证的值是通过参数去传递的，还有就是通过请求头去传递认证信息，
+     * 比如 Basic 认证方式。在 Feign 中我们可以直接配置 Basic 认证，代码如下所示
+     * @return
+     */
+//    @Bean
+//    public BasicAuthRequestInterceptor basicAuthRequestInterceptor(){
+//        return new BasicAuthRequestInterceptor("user", "password");
+//    }
+
+    /**
+     * 或者你可以自定义属于自己的认证方式，其实就是自定义一个请求拦截器。
+     * 在请求之前做认证操作，然后往请求头中设置认证之后的信息。通过实现 RequestInterceptor 接口来自定义认证方式
+     * @return
+     */
+//    @Bean
+//    public FeignBasicAuthRequestInterceptor feignBasicAuthRequestInterceptor(){
+//        return new FeignBasicAuthRequestInterceptor();
 //    }
 }
