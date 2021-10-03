@@ -7,7 +7,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableFeignClients(basePackages = "net.biancheng.eurekaclientarticleservice.client")
+@EnableFeignClients(basePackages = {"net.biancheng.eurekaclientarticleservice.client",
+        "com.biancheng.feigninheritapi.client"})
 public class EurekaClientArticleServiceApplication {
 
     public static void main(String[] args) {

@@ -12,15 +12,21 @@
     </parent>
 
     <groupId>net.biancheng</groupId>
-    <artifactId>eureka-client-article-service</artifactId>
+    <artifactId>feign-inherit-provide</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka-client-article-service客户端文章服务</name>
-    <description>eureka-client-article-service客户端文章服务</description>
+    <name>feign-inherit-provide</name>
+    <description>feign-inherit-provide</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>net.biancheng</groupId>
+            <artifactId>feign-inherit-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -31,6 +37,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -58,17 +65,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.biancheng</groupId>
-            <artifactId>feign-inherit-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
     <!-- Spring Cloud -->
@@ -83,6 +79,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <build>
         <plugins>
