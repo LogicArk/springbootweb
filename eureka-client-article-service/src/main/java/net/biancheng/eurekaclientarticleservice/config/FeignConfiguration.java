@@ -3,6 +3,7 @@ package net.biancheng.eurekaclientarticleservice.config;
 
 import feign.Contract;
 import feign.Logger;
+import feign.Request;
 import feign.auth.BasicAuthRequestInterceptor;
 import net.biancheng.eurekaclientarticleservice.interceptor.FeignBasicAuthRequestInterceptor;
 import org.springframework.context.annotation.Bean;
@@ -51,4 +52,14 @@ public class FeignConfiguration {
 //    public FeignBasicAuthRequestInterceptor feignBasicAuthRequestInterceptor(){
 //        return new FeignBasicAuthRequestInterceptor();
 //    }
+
+    /**
+     * 通过 Options 可以配置连接超时时间和读取超时时间（代码如下所示），Options 的第一个参数是连接超时时间（ms），
+     * 默认值是 10×1000；第二个是取超时时间（ms），默认值是 60×1000。
+     * @return
+     */
+    @Bean
+    public Request.Options options(){
+        return new Request.Options(5000,10000);
+    }
 }
