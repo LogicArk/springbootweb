@@ -1,6 +1,7 @@
 package net.biancheng.eurekaclientarticleservice.controller;
 
 import com.netflix.discovery.EurekaClient;
+import net.biancheng.eurekaclientarticleservice.client.UserRemoteClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ public class ArticleController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private UserRemoteClient userRemoteClient;
 
     @GetMapping("/article/callHello")
     public String callHello(){
@@ -37,5 +41,13 @@ public class ArticleController {
     @GetMapping("/article/infos2")
     public Object serviceUrl2(){
         return discoveryClient.getInstances("eureka-client-user-service");
+    }
+
+
+    @GetMapping("/callHelloByFeignClient")
+    public String callHelloByFeignClient(){
+        String result = userRemoteClient.hello();
+        System.out.println("输出结果：" + result);
+        return result;
     }
 }
