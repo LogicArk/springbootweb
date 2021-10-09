@@ -2,12 +2,17 @@ package net.biancheng.hystrixdemo.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import net.biancheng.hystrixdemo.client.UserRemoteClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class HelloController {
+
+    @Autowired
+    private UserRemoteClient userRemoteClient;
 
     @RequestMapping("/callHello")
     @HystrixCommand(fallbackMethod = "defaultCallHello",commandProperties = {
@@ -21,5 +26,10 @@ public class HelloController {
 
     public String defaultCallHello(){
         return "fail";
+    }
+
+    @RequestMapping("/callHello2")
+    public String callHello2(){
+        return userRemoteClient.hello();
     }
 }
